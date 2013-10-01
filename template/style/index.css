@@ -1,0 +1,69 @@
+body {
+    background-image: url("http://chatianqi.net/bingImg/");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:top;
+}
+.header-wrap {
+    border-bottom: none;
+}
+.p_part {
+    display: none;
+}
+/*----- Home page Post -----*/
+.post.link-title-post{
+    position: relative;
+    background:rgba(0,0,0,0.6);
+    background: transparent\9;
+    zoom:1\8; /* required for the filters */
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); /* IE5.5-7 */
+}
+.post.link-title-post .title{
+    color: #EEE;
+}
+/*----- Home page ref Post -----*/
+.post.ref-post .title a {
+    position: relative;
+    font-size: 0.8em;
+    color: #E60900;
+    -webkit-transition: color linear .4s;
+    -moz-transition: color linear .4s;
+    transition: color linear .4s;
+}
+
+.post.ref-post .title span {
+    font-size: 0.6em;
+    color: #E60900;
+    margin-left: 10px;
+}
+
+.post.ref-post .title span.source {
+    color: #aaa;
+}
+
+.comment-body {
+    position: relative;
+    padding-left: 1em;
+    font-size: .9em;
+    color: #555;
+    padding-top: 10px;
+}
+
+.comment-body:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "\201C";
+    font-size: 2em;
+    color: #eee;
+}
+
+.comment-body p {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.comment-body ul {
+    list-style: circle inside;
+}

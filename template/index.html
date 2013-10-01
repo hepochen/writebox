@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ site.title }}{% endblock %}
+
+{% block nav_index %}class="current"{% endblock %}
+{% block style %}<link rel="stylesheet" href="/template/style/index.css" type="text/css">
+<style type="text/css">
+.header .logo {
+    color: #EEE;
+}
+</style>
+{% endblock %}
+{% block content %}
+    {% include 'include/posts_list.html' %}
+<script>
+    $(document).ready(function(){
+        $('.link-title-post').mouseenter(function(){
+            $(this).find('.p_part').slideDown();
+        }); 
+        $('.link-title-post').mouseleave(function(){
+            $(this).find('.p_part').slideUp();
+        }); 
+    });
+</script>
+{% endblock %}

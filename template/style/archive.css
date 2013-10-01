@@ -1,0 +1,50 @@
+/*----- archive page -----*/
+.archive-list {
+    list-style: none;
+}
+
+.archive-list .year {
+    margin-left: 120px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #222;
+}
+
+.archive-list .post-set {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.archive-list .post-set .date {
+    display: block;
+    float: left;
+    width: 100px;
+}
+
+.archive-list .post-set .post-link {
+    margin-left: 120px;
+    overflow: hidden;
+}
+
+.refer-link {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.refer-link span {
+    font-size: 0.7em;
+}
+
+.archive-list a {
+    /*border-bottom: solid 1px #444;*/
+    -webkit-transition: all linear 0.4s;
+    -moz-transition: all linear 0.4s;
+    transition: all linear 0.4s;
+    text-decoration: underline;
+}
+
+.archive-list a:hover {
+    color: #C9261E;
+    border-bottom-color: #E60900;
+}
+

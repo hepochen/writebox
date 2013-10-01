@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="/template/style/post.css" type="text/css">
+<script src="/template/js/jquery.cookie.js"></script>
+{% endblock %}
+{% block content_id %}id="content-start"{% endblock %}
+{% block body %}
+<div class="time">
+    <img id="time_img" src="/template/image/sun.png">
+</div>
+{% endblock %}
+{% block content %}
+<div class="post normal-post">
+  <h2 class="title">
+    {% if post.metadata.has_key('type') and post.metadata['type'] == 'refer' %}
+    <a class="refer-title" href="{{ post.metadata['refer_url'] }}" target="_blank">{{ post.title }}</a>
+    {% else %}
+    {{ post.title }}
+    {% endif %}
+    <a title="permanent link" class="perman-link" href="{{post.url}}#content-start">∞</a></h2>
+  <span class="date">{{ post.date | date('%B %d, %Y') }}</span>
+  {% if post.tags %}
+  <p class="tags">Tags:
+  {% for tag in post.tags %}
+  <a href="/tags/{{ tag }}">{{ tag }}</a>
+  {% endfor %}
+  {% endif %}
+  </p>
+
+  <div class="post-body">
+    {{ post | auto_content }}
+  </div>
+
+  <p class="eof">· EOF ·</p>
+</div>
+<script>
+    $(document).ready(
+    function(){
+    var time = $.cookie('time');
+    if(time=='day'){
+            $('body').css('background-color','#FFF');
+            $('.logo').css('color','#000');
+            $('.post.normal-post').css('color','#000');
+            $('.title').css('color','#000');
+            $(this).find("#time_img").attr("src","/template/image/sun.png");
+          }
+        else if(time=='night'){
+          $('body').css('background-color','#333');
+            $('.logo').css('color','#FFF');
+            $('.post.normal-post').css('color','#FFF');
+            $('.title').css('color','#FFF');
+            $(this).find("#time_img").attr("src","/template/image/moon.png");
+        }
+    },
+    $('.time').on('click',function(){
+        var time = $.cookie('time');
+        if(time=='day'){
+            $('body').css('background-color','#333');
+            $('.logo').css('color','#FFF');
+            $('.post.normal-post').css('color','#FFF');
+            $('.title').css('color','#FFF');
+            $(this).find("#time_img").attr("src","/template/image/moon.png");
+            $.cookie('time','night',{expires:7,path:'/'});
+          }
+        else if(time=='night'){
+            $('body').css('background-color','#FFF');
+            $('.logo').css('color','#000');
+            $('.post.normal-post').css('color','#000');
+            $('.title').css('color','#000');
+            $(this).find("#time_img").attr("src","/template/image/sun.png");
+            $.cookie('time','day',{expires:7,path:'/'});
+          }
+        else{
+            $('body').css('background-color','#FFF');
+            $('.logo').css('color','#000');
+            $('.post.normal-post').css('color','#000');
+            $('.title').css('color','#000');
+            $(this).find("#time_img").attr("src","/template/image/sun.png");
+            $.cookie('time','day',{expires:7,path:'/'});
+          }
+        }));
+</script>
+<div id="disqus_thread" class="comments"></div>
+{{ get_text_file('comment_js').raw_content }}
+
+{% endblock %}
