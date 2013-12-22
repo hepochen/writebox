@@ -8,6 +8,26 @@
     color: #EEE;
 }
 </style>
+<script>
+ function getBingImage(idx, number, callback) {
+            var js = document.createElement('script'), rand = parseInt(Math.random() * 100000000);
+            js.setAttribute('type', 'text/javascript');
+            js.src = 'http://www.qiqiboy.com/bingimage.php?idx=' + (idx ? idx : 0) + '&number=' + (number ? number : 1) + '&varname=imgs_' + rand;
+            js.onload = js.onerror = js.onreadystatechange = function () {
+                if (js && js.readyState && js.readyState != "loaded" && js.readyState != "complete") {
+                    return;
+                }
+                callback(window['imgs_' + rand]);
+                js.onload = js.onreadystatechange = js.onerror = null;
+                js.parentNode.removeChild(js);
+                js = null;
+            };
+            document.getElementsByTagName('head')[0].appendChild(js);
+        }
+        function setBg(data) {
+            document.body.style.backgroundImage ="url(" + data[0].imgurl + ")";
+        }    
+</script>
 {% endblock %}
 {% block content %}
     {% include 'include/posts_list.html' %}
@@ -19,6 +39,7 @@
         $('.link-title-post').mouseleave(function(){
             $(this).find('.p_part').slideUp();
         }); 
+            getBingImage(0, 1, setBg);
     });
 </script>
 {% endblock %}
