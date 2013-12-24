@@ -12,6 +12,7 @@
     {% block style %}{% endblock %}
   </head>
   <body>
+
     <div class="header-wrap">
       <div class="header center-container">
         <a href="{{ site.title_link or '/' }}" class="logo" title="{{
@@ -32,7 +33,9 @@
         {% block content %}
         {% endblock %}
       </div>
-    </div>
+  </div>
+
     {% include 'include/footer.html' %}
+    <script type="text/javascript" src="https://s3.amazonaws.com/scrolltotop/arrow5.js"></script>
   </body>
 </html>
