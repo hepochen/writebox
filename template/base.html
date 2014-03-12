@@ -8,7 +8,6 @@
      <link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/template/style/base.css" type="text/css">
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    {{ get_text_file('ga_js').raw_content }}
     {% block style %}{% endblock %}
   </head>
   <body>
@@ -16,12 +15,14 @@
     <div class="header-wrap">
       <div class="header center-container">
         <a href="{{ site.title_link or '/' }}" class="logo" title="{{
-          site.title }}">{{ site.title or 'site.title'}}</a>
+          site.title }}">{{ site.title }}</a>
         {% if has('posts') %}
         <ul class="nav">
           <li> <a href="/" {% block nav_index %}{% endblock %}>home</a> </li>
           <li> <a href="/archive" {% block nav_archive %}{% endblock %}>archive</a> </li>
-          <li> <a href="/pages/about" {% if request.path == '/pages/about' %}class="current"{% endif %}>about</a> </li>
+          {% if has('about.md') %}
+            <li> <a href="/about.md" {% if request.path == '/about.md' %}class="current"{% endif %}>about</a> </li>
+          {% endif %}
           <li> <a href="/feed">RSS</a> </li>
         </ul>
         {% endif %}
